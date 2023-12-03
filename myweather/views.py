@@ -49,3 +49,11 @@ def get_temp(current_location):
     meteo_data = requests.get(api_request).json()
     temp = meteo_data['hourly']['temperature_2m'][current_hour]
     return temp
+
+def make_list(request):
+    new_zealand_cities = Worldcities.objects.filter(country='New Zealand')
+    template = loader.get_template('city_list.html')
+    context = {
+        'cities': new_zealand_cities
+    }
+    return HttpResponse(template.render(context, request))

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>City List</title>
+    <!-- Add your CSS or Bootstrap links here if needed -->
+</head>
+<body>
+    <h1>New Zealand Cities</h1>
+    <ul>
+        {% for city in cities %}
+            <li>{{ city.city }}</li>
+        {% endfor %}
+    </ul>
+    <!-- Add other HTML content or styling as needed -->
+</body>
+</html>
