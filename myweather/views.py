@@ -27,12 +27,13 @@ def temp_current(request):
     # geocoder - python library
     current_location = geocoder.ip('me').latlng
     temp = get_temp(current_location)
-
+    new_zealand_cities = make_list(request)
     template = loader.get_template('index.html')
     # index name of html file
     context =  {
         'city' : 'Your Location',
-        'temp' : temp}
+        'temp' : temp,
+        'city_list' : new_zealand_cities}
     # dictionary of values
     # want to return template of text
     return HttpResponse(template.render(context, request))
@@ -52,8 +53,4 @@ def get_temp(current_location):
 
 def make_list(request):
     new_zealand_cities = Worldcities.objects.filter(country='New Zealand')
-    template = loader.get_template('city_list.html')
-    context = {
-        'cities': new_zealand_cities
-    }
-    return HttpResponse(template.render(context, request))
+    return new_zealand_cities
